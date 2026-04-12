@@ -14,9 +14,6 @@ $(call inherit-product, vendor/infinity/config/common_full_tablet_wifionly.mk)
 # Inherit from pipa device
 $(call inherit-product, device/xiaomi/pipa/device.mk)
 
-# Inherit keys
-$(call inherit-product, vendor/lineage-priv/keys/keys.mk)
-
 # Infinity flags
 INFINITY_BUILD_TYPE := OFFICIAL
 INFINITY_MAINTAINER := MufasaXz
