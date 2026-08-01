@@ -15,8 +15,8 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color
 
 # ⚙️ Configuration
-KERNEL_REPO="https://github.com/gensis01/kernel_xiaomi_pipa"
-KERNEL_BRANCH="16"
+KERNEL_REPO="https://github.com/SD870/kernel_xiaomi_sm8250.git"
+KERNEL_BRANCH="16.rksu"
 ROOT_DIR=$(pwd)
 
 # 🛠️ Helper Functions
@@ -159,10 +159,10 @@ echo -e "${BOLD}>>> 1. CLONING ALL REPOSITORIES${NC}"
 clone_repo "$KERNEL_REPO" "$KERNEL_BRANCH" "kernel/xiaomi/sm8250"
 
 # Dependencies
-clone_repo "https://github.com/gensis01/android_device_xiaomi_sm8250-common" "16" "device/xiaomi/sm8250-common"
-clone_repo "https://github.com/gensis01/vendor_xiaomi_sm8250-common" "16" "vendor/xiaomi/sm8250-common"
-clone_repo "https://github.com/gensis01/vendor_xiaomi_pipa" "16" "vendor/xiaomi/pipa"
-clone_repo "https://github.com/gensis01/hardware_xiaomi.git" "16" "hardware/xiaomi" "fresh"
+clone_repo "https://github.com/MufasaXz/android_device_xiaomi_sm8250-common" "lineage-23.2" "device/xiaomi/sm8250-common"
+clone_repo "https://github.com/MufasaXz/vendor_xiaomi_sm8250-common" "16" "vendor/xiaomi/sm8250-common"
+clone_repo "https://github.com/MufasaXz/vendor_xiaomi_pipa" "16" "vendor/xiaomi/pipa"
+clone_repo "https://github.com/sd870/hardware_xiaomi.git" "16" "hardware/xiaomi" "fresh"
 clone_repo "https://github.com/PocoF3Releases/packages_resources_devicesettings.git" "aosp-16" "packages/resources/devicesettings" "fresh"
 
 echo -e "${GREEN}${BOLD}✔ All repositories cloned successfully.${NC}"
