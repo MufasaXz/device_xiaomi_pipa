@@ -172,8 +172,11 @@ echo -e "${GREEN}${BOLD}✔ All repositories cloned successfully.${NC}"
 echo -e "\n${BOLD}>>> 2. APPLYING PATCHES${NC}"
 DEVICE_PATH="device/xiaomi/pipa"
 mkdir -p "$DEVICE_PATH/patches"
+mkdir -p "$DEVICE_PATH/source-patches"
 
 apply_patch "Tablet FWB Patch" "$ROOT_DIR/$DEVICE_PATH/patches/tablet-fwb.patch" "frameworks/base"
+apply_patch "Frameworks Base Patch" "$ROOT_DIR/$DEVICE_PATH/source-patches/frameworks_base.patch" "frameworks/base"
+apply_patch "Frameworks AV Patch" "$ROOT_DIR/$DEVICE_PATH/source-patches/frameworks_av.patch" "frameworks/av"
 
 
 # STEP 3: SETUP FIRMWARE (Only runs after cloning and patching)

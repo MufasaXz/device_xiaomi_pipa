@@ -1,0 +1,116 @@
+diff --git a/packages/SystemUI/src/com/android/systemui/clocks/ClockStyle.kt b/packages/SystemUI/src/com/android/systemui/clocks/ClockStyle.kt
+index a59419c8d..935d1e53d 100644
+--- a/packages/SystemUI/src/com/android/systemui/clocks/ClockStyle.kt
++++ b/packages/SystemUI/src/com/android/systemui/clocks/ClockStyle.kt
+@@ -114,9 +114,22 @@ class ClockStyle @JvmOverloads constructor(
+     override fun onFinishInflate() {
+         super.onFinishInflate()
+         clockStub = findViewById(R.id.clock_view_stub)
++        clockContainer = findViewById(R.id.clock_frame)
+         updateClockView()
+     }
+ 
++    override fun onConfigurationChanged(newConfig: android.content.res.Configuration) {
++        super.onConfigurationChanged(newConfig)
++        post {
++            if (clockContainer == null) {
++                clockContainer = findViewById(R.id.clock_frame)
++            }
++            updateClockFrameMargin()
++            updateClockAppearance()
++            forceTimeUpdate()
++        }
++    }
++
+     override fun onAttachedToWindow() {
+         super.onAttachedToWindow()
+         if (callbacksRegistered) return
+@@ -308,7 +321,10 @@ class ClockStyle @JvmOverloads constructor(
+         styledTextViews.clear()
+ 
+         if (clockStyle in 1 until CLOCK_LAYOUTS.size) {
+-            val stub = clockStub
++            if (clockContainer == null) {
++                clockContainer = findViewById(R.id.clock_frame)
++            }
++            val stub = clockStub ?: findViewById(R.id.clock_view_stub)
+             if (stub != null) {
+                 stub.layoutResource = CLOCK_LAYOUTS[clockStyle]
+                 val inflated = stub.inflate()
+diff --git a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/KeyguardClockStyleSection.kt b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/KeyguardClockStyleSection.kt
+index df333ff63..2ab25c1ea 100644
+--- a/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/KeyguardClockStyleSection.kt
++++ b/packages/SystemUI/src/com/android/systemui/keyguard/ui/view/layout/sections/KeyguardClockStyleSection.kt
+@@ -40,7 +40,6 @@ constructor(
+     private var isCustomClockEnabled: Boolean = false
+     
+     override fun addViews(constraintLayout: ConstraintLayout) {
+-        
+         val clockStyle = secureSettings.getIntForUser(
+             ClockStyle.CLOCK_STYLE_KEY, 0, UserHandle.USER_CURRENT
+         )
+@@ -53,27 +52,40 @@ constructor(
+         }
+         
+         val inflater = android.view.LayoutInflater.from(context)
+-        clockStyleView = inflater.inflate(R.layout.keyguard_clock_style, null) as ClockStyle
++        clockStyleView = inflater.inflate(R.layout.keyguard_clock_style, constraintLayout, false) as ClockStyle
+         clockStyleView?.apply {
+             id = R.id.clock_ls
+-            layoutParams = ConstraintLayout.LayoutParams(
+-                ConstraintLayout.LayoutParams.MATCH_PARENT,
+-                ConstraintLayout.LayoutParams.WRAP_CONTENT
+-            )
+             visibility = View.VISIBLE
++            alpha = 1f
+         }
+         
+         clockStyleView?.let { constraintLayout.addView(it) }
+     }
+     
+     override fun bindData(constraintLayout: ConstraintLayout) {
++        val clockStyle = secureSettings.getIntForUser(
++            ClockStyle.CLOCK_STYLE_KEY, 0, UserHandle.USER_CURRENT
++        )
++        isCustomClockEnabled = clockStyle != 0
++        if (!isCustomClockEnabled) return
++
++        if (clockStyleView == null || clockStyleView?.parent == null) {
++            addViews(constraintLayout)
++        }
++
+         clockStyleView?.let { clockView ->
++            clockView.visibility = View.VISIBLE
++            clockView.alpha = 1f
+             clockView.onTimeChanged()
+             clockView.requestLayout()
+         }
+     }
+     
+     override fun applyConstraints(constraintSet: ConstraintSet) {
++        val clockStyle = secureSettings.getIntForUser(
++            ClockStyle.CLOCK_STYLE_KEY, 0, UserHandle.USER_CURRENT
++        )
++        isCustomClockEnabled = clockStyle != 0
+         if (!isCustomClockEnabled) return
+         
+         constraintSet.apply {
+@@ -89,6 +101,8 @@ constructor(
+             setMargin(R.id.clock_ls, ConstraintSet.START, 0)
+             setMargin(R.id.clock_ls, ConstraintSet.END, 0)
+             setElevation(R.id.clock_ls, 1f)
++            setVisibility(R.id.clock_ls, ConstraintSet.VISIBLE)
++            setAlpha(R.id.clock_ls, 1f)
+             
+             // UNIFIED BARRIER - Create barrier in every section that could be last
+             createUnifiedBarrierAndNotificationConstraints(constraintSet)
+@@ -117,6 +131,9 @@ constructor(
+         clockStyleView?.let { clockView ->
+             (clockView.parent as? ViewGroup)?.removeView(clockView)
+         }
++        constraintLayout.findViewById<View?>(R.id.clock_ls)?.let { existingView ->
++            (existingView.parent as? ViewGroup)?.removeView(existingView)
++        }
+         clockStyleView = null
+     }
+ }
