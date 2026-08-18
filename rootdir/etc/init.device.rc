@@ -14,6 +14,10 @@ on boot
     chmod 0664 /dev/nanodev0
     start xiaomi-keyboard
 
+    # Bypass Charging permissions
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/input_suspend
+
 service xiaomi-pen /vendor/bin/xiaomi-pen ${persist.vendor.parts.pen}
     class main
     user system
@@ -27,6 +31,19 @@ service xiaomi-keyboard /vendor/bin/xiaomi-keyboard
     group system input
     oneshot
     disabled
+
+# Bypass Charging
+on property:sys.boot_completed=1
+    chmod 0666 /sys/class/power_supply/battery/input_suspend
+    chown system system /sys/class/power_supply/battery/input_suspend
+
+# Start keyboard service when user enables it
+on property:persist.vendor.parts.keyboard=1
+    start xiaomi-keyboard
+
+# Stop keyboard service when user disables it
+on property:persist.vendor.parts.keyboard=0
+    stop xiaomi-keyboard
 
 on property:persist.vendor.parts.pen=*
     start xiaomi-pen
