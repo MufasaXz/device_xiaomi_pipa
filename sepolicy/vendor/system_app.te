@@ -1,9 +1,12 @@
 set_prop(system_app, vendor_pen_prop)
+set_prop(system_app, pipacore_prop)
 
-# Allow system_app (PipaCore) to write CPU cpufreq, GPU KGSL, and Battery supply nodes (Bypass Charging)
+# Allow system_app (PipaCore) to write CPU cpufreq, GPU KGSL, Battery supply nodes, and sconfig
 allow system_app sysfs_devices_system_cpu:file rw_file_perms;
 allow system_app vendor_sysfs_kgsl:file rw_file_perms;
 allow system_app vendor_sysfs_battery_supply:file rw_file_perms;
 allow system_app vendor_sysfs_battery_supply:dir search;
 allow system_app sysfs_battery_supply:file rw_file_perms;
 allow system_app sysfs_battery_supply:dir search;
+allow system_app sysfs_thermal:file rw_file_perms;
+allow system_app sysfs_thermal:dir search;

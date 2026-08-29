@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2026 nullpointer1101
+     Copyright (C) 2026 MufasaXz
 
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <style name="Theme.PipaCore.SubSettings" parent="@style/Theme.SubSettingsBase" />
+    <style name="Theme.PipaCore.Dark" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Theme.Pipacore" parent="Theme.PipaCore.Dark" />
 </resources>
