@@ -6,13 +6,59 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- App & Dashboard -->
     <string name="app_title">PipaCore</string>
+    <string name="app_name">PipaCore</string>
+    <string name="pipacore_app_name">PipaCore</string>
+    <string name="dashboard_title">PipaCore</string>
+    <string name="dashboard_subtitle">Hardware tuning and Xiaomi Pad 6 features</string>
 
     <!-- Bypass Charging -->
     <string name="bypass_charging_title">Bypass Charging</string>
-    <string name="bypass_charging_summary">Suspend battery input to run directly from the charger</string>
-    <string name="bypass_charging_status_on">Status: Active &#8212; Battery input is suspended</string>
-    <string name="bypass_charging_status_off">Status: Inactive &#8212; Charging normally</string>
-    <string name="bypass_charging_not_supported">Bypass charging is not supported by the current kernel</string>
-    <string name="bypass_charging_footer">When enabled, power flows directly from the charger to the device, bypassing the battery. The battery will not charge while this is active.\n\nThe feature resets automatically on reboot.</string>
+    <string name="bypass_charging_summary">Power the tablet directly without charging the battery</string>
+    <string name="bypass_charging_status_on">Bypass mode active</string>
+    <string name="bypass_charging_status_off">Standard charging</string>
+    <string name="bypass_charging_not_supported">Bypass charging is not supported on this device</string>
+    <string name="bypass_charging_tile_label">Bypass Charging</string>
+    <string name="bypass_charging_footer">When enabled, the charger powers the hardware directly to reduce heat and extend battery health during heavy gaming or intensive tasks.</string>
+
+    <!-- Core Control -->
+    <string name="core_control_title">Core Control</string>
+    <string name="core_control_summary">Configure active CPU cores and efficiency settings</string>
+    <string name="core_control_efficiency_category">Efficiency Cores (Cortex-A55)</string>
+    <string name="core_control_performance_category">Performance Cores (Cortex-A77)</string>
+    <string name="core_control_prime_category">Prime Core (Cortex-A77 Turbo)</string>
+    <string name="cpu0_title">CPU Core 0</string>
+    <string name="cpu0_summary">Primary system boot core (Fixed Online)</string>
+    <string name="cpu1_title">CPU Core 1</string>
+    <string name="cpu1_summary">Secondary efficiency core (System Stability Lock)</string>
+    <string name="cpu2_title">CPU Core 2</string>
+    <string name="cpu2_summary">Efficiency core (Toggleable)</string>
+    <string name="cpu3_title">CPU Core 3</string>
+    <string name="cpu3_summary">Efficiency core (Toggleable)</string>
+    <string name="cpu4_title">CPU Core 4</string>
+    <string name="cpu4_summary">Primary performance core (UI Thread Lock)</string>
+    <string name="cpu5_title">CPU Core 5</string>
+    <string name="cpu5_summary">Performance core (Toggleable)</string>
+    <string name="cpu6_title">CPU Core 6</string>
+    <string name="cpu6_summary">Performance core (Toggleable)</string>
+    <string name="cpu7_title">CPU Core 7</string>
+    <string name="cpu7_summary">Prime performance turbo core up to 3.2 GHz (Toggleable)</string>
+    <string name="status_always_active">Always Active</string>
+    <string name="core_control_footer_warning">Note: CPU cores 0, 1, and 4 are permanently locked online by hardware and kernel design for system responsiveness and OS stability.</string>
+
+    <!-- Thermal Profiles -->
+    <string name="thermal_profile_title">Thermal Profiles</string>
+    <string name="thermal_profile_summary">Manage thermal throttling and power limits</string>
+    <string name="thermal_profile_enable_title">Enable Thermal Profiles</string>
+    <string name="thermal_profile_enable_summary">Apply custom thermal profile limits to system</string>
+    <string name="thermal_profile_disabled_summary">Using system default thermal configuration</string>
+    <string name="thermal_profile_performance">Performance</string>
+    <string name="thermal_profile_performance_summary">Higher thermal limits for intensive gaming and heavy multitasking</string>
+    <string name="thermal_profile_balanced">Balanced</string>
+    <string name="thermal_profile_balanced_summary">Optimized balance between sustained performance and battery temperature</string>
+    <string name="thermal_profile_battery">Battery Saver</string>
+    <string name="thermal_profile_battery_summary">Aggressive thermal limits to maximize battery life and keep device cool</string>
+    <string name="thermal_profile_tile_label">Thermal Profile</string>
+    <string name="status_offline">Disabled</string>
 </resources>
