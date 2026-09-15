@@ -69,3 +69,6 @@ PRODUCT_PACKAGES += \
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/xiaomi/pipa/pipa-vendor.mk)
+
+# Camera
+$(call inherit-product-if-exists, device/xiaomi/camera/miuicamera.mk)

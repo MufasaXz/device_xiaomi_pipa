@@ -163,6 +163,8 @@ clone_repo "https://github.com/MufasaXz/android_device_xiaomi_sm8250-common" "li
 clone_repo "https://github.com/MufasaXz/vendor_xiaomi_sm8250-common" "lineage-24.0" "vendor/xiaomi/sm8250-common"
 clone_repo "https://github.com/MufasaXz/vendor_xiaomi_pipa" "16" "vendor/xiaomi/pipa"
 clone_repo "https://github.com/sd870/hardware_xiaomi.git" "16" "hardware/xiaomi" "fresh"
+clone_repo "https://github.com/MufasaXz/device_xiaomi_camera.git" "lineage-23.2" "device/xiaomi/camera" "fresh"
+clone_repo "https://github.com/MufasaXz/vendor_xiaomi_camera.git" "lineage-23.2" "vendor/xiaomi/camera" "fresh"
 clone_repo "https://github.com/PocoF3Releases/packages_resources_devicesettings.git" "aosp-16" "packages/resources/devicesettings" "fresh"
 
 echo -e "${GREEN}${BOLD}✔ All repositories cloned successfully.${NC}"
