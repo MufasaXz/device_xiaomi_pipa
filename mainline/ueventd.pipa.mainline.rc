@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
+/dev/dri/card*       0660 system graphics
+/dev/dri/renderD*    0666 root graphics
+/dev/dma_heap/system 0660 system graphics

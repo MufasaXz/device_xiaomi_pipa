@@ -1,0 +1,5 @@
+vendor.hwc.drm.     u:object_r:vendor_pipa_mainline_graphics_prop:s0 prefix
+vendor.hwc.backend_override u:object_r:vendor_pipa_mainline_graphics_prop:s0 exact string
+ro.vendor.hwc.     u:object_r:vendor_pipa_mainline_graphics_prop:s0 prefix
+vendor.mesa.        u:object_r:vendor_pipa_mainline_graphics_prop:s0 prefix
+vendor.minigbm.     u:object_r:vendor_pipa_mainline_graphics_prop:s0 prefix

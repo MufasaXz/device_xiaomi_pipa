@@ -30,3 +30,5 @@ SOONG_CONFIG_XIAOMI_KONA_WIFI_SYMLINK_VERSION := v2
 
 # Inherit from the proprietary version
 include vendor/xiaomi/pipa/BoardConfigVendor.mk
+
+include $(DEVICE_PATH)/mainline/BoardConfig.mk

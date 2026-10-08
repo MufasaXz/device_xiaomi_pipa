@@ -5,3 +5,10 @@ prebuilt_etc {
     sub_dir: "init",
     system_ext_specific: true,
 }
+
+prebuilt_etc {
+    name: "ueventd.pipa.mainline.rc",
+    src: "ueventd.pipa.mainline.rc",
+    filename: "ueventd.rc",
+    device_specific: true,
+}

@@ -5,4 +5,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_pipa.mk
+    $(LOCAL_DIR)/lineage_pipa.mk \
+    $(LOCAL_DIR)/infinity_pipa_mainline.mk
