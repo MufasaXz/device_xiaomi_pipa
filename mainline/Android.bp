@@ -12,3 +12,19 @@ prebuilt_etc {
     filename: "ueventd.rc",
     device_specific: true,
 }
+
+// Source groups are selected by the common rootdir modules only for pipa.
+filegroup {
+    name: "pipa.mainline.fstab",
+    srcs: ["fstab.pipa.mainline"],
+}
+
+filegroup {
+    name: "pipa.mainline.init.target",
+    srcs: ["init.target.pipa.mainline.rc"],
+}
+
+filegroup {
+    name: "pipa.mainline.init.recovery",
+    srcs: ["init.recovery.qcom.pipa.mainline.rc"],
+}

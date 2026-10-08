@@ -13,11 +13,13 @@
   <remove-project path="external/minigbm" />
   <remove-project path="system/memory/libion" />
   <project path="device/xiaomi/pipa" name="MufasaXz/device_xiaomi_pipa" remote="pipa-mainline-github" revision="pipa-6.18.28-android17-v0.1" />
-  <project path="device/xiaomi/sm8250-common" name="MufasaXz/android_device_xiaomi_sm8250-common" remote="pipa-mainline-github" revision="346e33ab2eed83dcfbd69e4c4c7ac130109a2b0b" />
-  <project path="kernel/xiaomi/pipa-mainline" name="MufasaXz/kernel_xiaomi_pipa" remote="pipa-mainline-github" revision="d7b0eba517a1f8cd15055233ce122d8a80fb261e" />
+  <project path="device/xiaomi/sm8250-common" name="MufasaXz/android_device_xiaomi_sm8250-common" remote="pipa-mainline-github" revision="c72ee615f7ff9abbb96e19ba8f4b7be4b9d14933" />
+  <project path="kernel/xiaomi/pipa-mainline" name="MufasaXz/kernel_xiaomi_pipa" remote="pipa-mainline-github" revision="76de89a4bbad6148f158c9a6403444c9bd74104b" />
   <project path="external/mesa" name="me-cafebabe-aosp-mainline/android_external_mesa" remote="pipa-mainline-github" revision="69ee2c74a951fe6873635b68bb4133a39810c0c3" />
   <project path="prebuilts/mesa-build-dep" name="me-cafebabe-aosp-mainline/android_prebuilts_mesa-build-dep" remote="pipa-mainline-github" revision="1121f16432d25f08db3844588f12e1e2eaf8f42d" />
   <project path="external/drm_hwcomposer" name="platform/external/drm_hwcomposer" remote="pipa-mainline-aosp" revision="87daba89b05fabc7f1e9316e3f283f19fd0c45cd" />
   <project path="external/minigbm" name="platform/external/minigbm" remote="pipa-mainline-aosp" revision="ce79bbee67b3e2ea7abb110e1415e9ceceaa6471" />
-  <project path="system/memory/libion" name="MufasaXz/android_system_memory_libion" remote="pipa-mainline-github" revision="257cd6634b0a2ea0b8a8303e21dea53583fca98e" />
+  <project path="system/memory/libion" name="MufasaXz/android_system_memory_libion" remote="pipa-mainline-github" revision="34d80886cad3d437689fc42f6d0983b86f7e3f66" />
+  <remove-project path="vendor/firmware/pipa-mainline" optional="true" />
+  <project path="vendor/firmware/pipa-mainline" name="pipa-mainline/xiaomi-pipa-firmware" remote="pipa-mainline-github" revision="842d35beffeda8c6d1b0e611b335543bf0e6b41e" />
 </manifest>

@@ -16,6 +16,10 @@ runtime backend explicit. Proprietary graphics libraries remain available to
 other vendor clients, but are not selected as the EGL/Vulkan implementation.
 
 A650 GMU/SQE and pipa zap firmware are packaged at the upstream DT paths.
+The pinned pipa-mainline firmware repository supplies both Novatek panel
+variants' touch firmware, Awinic amplifier configuration and merged ADSP/CDSP/
+SLPI/Venus images at their DT paths. Packaging firmware does not integrate the
+Android audio, sensors or media HALs.
 ODM ueventd grants access to DRM nodes and the system DMA heap. Vendor SELinux
 labels the services, Mesa/mapper libraries and DRM nodes; the mainline option
 requires neverallow checks. Android runtime enforcement, buffer imports,
@@ -52,6 +56,11 @@ The label is forced UNOFFICIAL for development. A completed compile is not
 permission to flash the generated OTA.
 
 ## Security and boot blockers
+
+The mainline fstab uses global /dev/block/by-name paths, with UFS sysfs at
+soc@0/1d84000.ufshc. Its userdata encryption/checkpoint flags are preserved
+exactly. Matching init/recovery scripts and a DT boot_devices value avoid the
+stock bootloader's downstream soc path. Recovery uses generic DRM.
 
 Existing hardware-backed Keymaster/Gatekeeper and wrappedkey_v0 fstab settings
 are retained. Software KeyMint/Gatekeeper cannot substitute for the existing

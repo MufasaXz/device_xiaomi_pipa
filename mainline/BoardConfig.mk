@@ -11,6 +11,12 @@ AB_OTA_PARTITIONS := $(filter-out dtbo,$(AB_OTA_PARTITIONS))
 # Stock DTBO compatibility is unresolved; this is a local build checkpoint.
 # The existing vendor modules cannot be loaded into Linux 6.18.
 BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
+# Match mainline's UFS platform path so first-stage init creates global by-name
+# links before loading the encrypted userdata mapping.
+BOARD_KERNEL_CMDLINE += androidboot.boot_devices=soc@0/1d84000.ufshc
+$(call soong_config_set_bool,XIAOMI_KONA,mainline_pipa,true)
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/mainline/fstab.pipa.mainline
+$(call soong_config_set_bool,recovery,target_recovery_uses_qti_drm,false)
 
 BOARD_MESA3D_USES_MESON_BUILD := true
 BOARD_MESA3D_GALLIUM_DRIVERS := freedreno
