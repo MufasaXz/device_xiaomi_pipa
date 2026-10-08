@@ -72,3 +72,6 @@ $(call inherit-product, vendor/xiaomi/pipa/pipa-vendor.mk)
 
 # Camera
 $(call inherit-product-if-exists, device/xiaomi/camera/miuicamera.mk)
+
+# Linux 6.18 Android compatibility additions (explicit opt-in).
+$(call inherit-product, device/xiaomi/pipa/mainline/product.mk)

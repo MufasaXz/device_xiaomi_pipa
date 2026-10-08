@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: Apache-2.0
+prebuilt_etc {
+    name: "init.pipa.mainline.memfd.rc",
+    src: "init.pipa.mainline.memfd.rc",
+    sub_dir: "init",
+    system_ext_specific: true,
+}

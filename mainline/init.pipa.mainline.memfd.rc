@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
+# mainline has no /dev/ashmem; libcutils must allocate sealed memfds instead.
+on load-bpf-programs
+    setprop sys.use_memfd true
